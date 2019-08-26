@@ -1,0 +1,126 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Scripts/Phases/GameOver.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Backgrounds/BackgroundInit.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Fonts/Comfortaa-Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Sprites/GUI/Selector.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/GUI/GUI_Background.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/GUI/Play.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/GUI/X.png" type="Texture" id=7]
+
+[sub_resource type="DynamicFont" id=1]
+size = 42
+font_data = ExtResource( 3 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 202.378, 55.2533 )
+
+[node name="GameOver" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Background" type="Sprite" parent="."]
+position = Vector2( 479.213, 241.555 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Sorry" type="Label" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 182.143
+margin_top = 37.4725
+margin_right = 774.143
+margin_bottom = 158.472
+custom_fonts/font = SubResource( 1 )
+text = "BEST LUCK IN THE
+NEXT TIME"
+align = 1
+
+[node name="Start" type="Area2D" parent="."]
+position = Vector2( 2.15851, 34.5356 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Start"]
+position = Vector2( 449.028, 184.931 )
+z_index = 2
+shape = SubResource( 2 )
+
+[node name="Box" type="Sprite" parent="Start"]
+position = Vector2( 589.779, 186.103 )
+scale = Vector2( 1.65233, 1.53552 )
+texture = ExtResource( 4 )
+
+[node name="BgText" type="Sprite" parent="Start"]
+position = Vector2( 384.939, 187.448 )
+scale = Vector2( 2.33544, 1.75856 )
+texture = ExtResource( 5 )
+
+[node name="Start" type="Sprite" parent="Start"]
+position = Vector2( 589.961, 187.392 )
+scale = Vector2( 1.64618, 1.64618 )
+texture = ExtResource( 6 )
+
+[node name="LabelStart" type="Label" parent="Start"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 270.875
+margin_top = 160.746
+margin_right = 513.875
+margin_bottom = 219.746
+custom_fonts/font = SubResource( 1 )
+text = "RESTART"
+
+[node name="Quit" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( 2.15851, 34.5356 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Quit"]
+position = Vector2( 449.028, 306.478 )
+z_index = 2
+shape = SubResource( 2 )
+
+[node name="Box2" type="Sprite" parent="Quit"]
+position = Vector2( 589.779, 305 )
+scale = Vector2( 1.65233, 1.53552 )
+texture = ExtResource( 4 )
+
+[node name="BgText2" type="Sprite" parent="Quit"]
+position = Vector2( 384.939, 306.344 )
+scale = Vector2( 2.33544, 1.75856 )
+texture = ExtResource( 5 )
+
+[node name="Quit" type="Sprite" parent="Quit"]
+position = Vector2( 588.945, 304.996 )
+scale = Vector2( 1.92311, 1.92311 )
+texture = ExtResource( 7 )
+
+[node name="LabelQuit" type="Label" parent="Quit"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 326.072
+margin_top = 283.344
+margin_right = 468.072
+margin_bottom = 342.344
+custom_fonts/font = SubResource( 1 )
+text = "QUIT"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 66.9665, 11.9583 )
+anchor_mode = 0
+current = true
+zoom = Vector2( 0.6, 0.6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+[connection signal="input_event" from="Start" to="." method="_on_start_click"]
+[connection signal="input_event" from="Quit" to="." method="_on_quit_click"]
+[connection signal="timeout" from="Timer" to="." method="_on_pass_one_second"]
