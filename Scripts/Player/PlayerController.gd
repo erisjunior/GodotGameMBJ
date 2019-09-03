@@ -11,7 +11,7 @@ func _process(delta):
 	move.y += PlayerVariables.gravity * delta
 
 	if Input.is_action_pressed("ui_right"):
-		move.x = min(PlayerVariables.moveXMax*delta, move.x*delta + PlayerVariables.moveXForce*delta)
+		move.x = min(PlayerVariables.moveXMax, move.x + PlayerVariables.moveXForce)*delta
 		
 		$Animated.flip_h = false
 		if !isJumping:
@@ -19,7 +19,7 @@ func _process(delta):
 			$Animated.playing = true
 	
 	elif Input.is_action_pressed("ui_left"):
-		move.x = max(-PlayerVariables.moveXMax*delta, move.x*delta - PlayerVariables.moveXForce*delta)
+		move.x = max(-PlayerVariables.moveXMax, move.x - PlayerVariables.moveXForce)*delta
 		
 		$Animated.flip_h = true
 		if !isJumping:
